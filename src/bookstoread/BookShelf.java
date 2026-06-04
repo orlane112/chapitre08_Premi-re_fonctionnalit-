@@ -6,11 +6,10 @@ import java.util.stream.Collectors;
 public class BookShelf {
     private final List<Book> books = new ArrayList<>();
 
-    public List<String> books() {
+    public List<Book> books() {
         return Collections.unmodifiableList(
                 books.stream()
-                        .sorted()
-                        .map(Book::getTitle)
+                        .sorted(Comparator.comparing(Book::getTitle))
                         .collect(Collectors.toList())
         );
     }
@@ -21,7 +20,7 @@ public class BookShelf {
         }
     }
 
-    public List<String> arrange() {
+    public List<Book> arrange() {
         return books.stream()
                 .map(Book::getTitle)
                 .sorted()
