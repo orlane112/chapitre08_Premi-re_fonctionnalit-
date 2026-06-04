@@ -22,7 +22,6 @@ public class BookShelf {
 
     public List<Book> arrange() {
         return books.stream()
-                .map(Book::getTitle)
                 .sorted()
                 .collect(Collectors.toList());
     }
