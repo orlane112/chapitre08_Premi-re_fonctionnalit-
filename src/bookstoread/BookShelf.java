@@ -4,18 +4,28 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class BookShelf {
-    private final List<String> books = new ArrayList<>();
+    private final List<Book> books = new ArrayList<>();
 
     public List<String> books() {
-        return Collections.unmodifiableList(books);
+        return Collections.unmodifiableList(
+                books.stream()
+                        .sorted()
+                        .map(Book::getTitle)
+                        .collect(Collectors.toList())
+        );
     }
 
     public void add(String... booksToAdd) {
-        books.addAll(Arrays.asList(booksToAdd));
+        for (String title : booksToAdd) {
+            books.add(new Book(title, "unknown", null));
+        }
     }
 
     public List<String> arrange() {
-        return books.stream().sorted().collect(Collectors.toList());
+        return books.stream()
+                .map(Book::getTitle)
+                .sorted()
+                .collect(Collectors.toList());
     }
 
 }
