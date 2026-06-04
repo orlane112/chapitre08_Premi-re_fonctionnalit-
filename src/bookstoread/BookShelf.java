@@ -1,17 +1,16 @@
 package bookstoread;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class BookShelf {
+
     private final List<Book> books = new ArrayList<>();
 
     public List<Book> books() {
-        return Collections.unmodifiableList(
-                books.stream()
-                        .sorted(Comparator.comparing(Book::getTitle))
-                        .collect(Collectors.toList())
-        );
+        return Collections.unmodifiableList(books);
     }
 
     public void add(String... booksToAdd) {
@@ -25,5 +24,4 @@ public class BookShelf {
                 .sorted()
                 .collect(Collectors.toList());
     }
-
 }
