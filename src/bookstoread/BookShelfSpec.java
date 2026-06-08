@@ -1,3 +1,5 @@
+package bookstoread;
+
 import bookstoread.Book;
 import bookstoread.BookShelf;
 import org.junit.jupiter.api.BeforeEach;
